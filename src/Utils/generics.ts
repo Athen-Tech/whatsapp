@@ -163,12 +163,7 @@ export async function promiseTimeout<T>(ms: number | undefined, promise: (resolv
 	const p = new Promise((resolve, reject) => {
 		delay
 			.then(() => reject(
-				new Boom('Timed Out', {
-					statusCode: DisconnectReason.timedOut,
-					data: {
-						stack
-					}
-				})
+				Logger.error('Connection Timed Out on Baileys')
 			))
 			.catch (err => reject(err))
 
